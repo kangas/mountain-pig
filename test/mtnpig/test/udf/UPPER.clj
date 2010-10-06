@@ -15,5 +15,6 @@
      )
 
 (deftest test-UPPER-exec
-  (is (string?
-       (-exec {} testdata))))
+  (let [r (-exec {} testdata)]
+    (prn r)
+    (is (string? r))))

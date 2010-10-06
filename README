@@ -3,19 +3,42 @@
 Utilities for use with Apache Pig (http://hadoop.apache.org/pig)
 
 The name is from my sister's dog, Hank, a little porker who'll climb anything.
-Here's a picture: http://www.flickr.com/photos/mattkangas/2956057564/
+Here's a picture of him in action:
+http://www.flickr.com/photos/mattkangas/2956057564/
 
-Besides, I figured "mountain-pig" is no worse a name than
-http://github.com/kevinweil/elephant-bird/
+Besides, I figured "mountain-pig" is no more ridiculous a name that Twitter's
+"elephant-bird" library. :-) (http://github.com/kevinweil/elephant-bird/)
 
+## Requirements
 
-## Usage
+1. Pig 0.6
+2. Leiningen
 
-FIXME: write
+## Build
 
-## Installation
+1. lein deps
+2. lein javac
+3. lein jar
 
-FIXME: write
+Note that "lein uberjar" doesn't do the right thing yet.
+
+## Run
+
+Set PIG_CLASSPATH:
+    PIG_CLASSPATH=lib/*:mountain-pig-0.1.0.jar
+
+Run:
+    pig -x local sample.pig
+
+Output should look like:
+
+    ....
+    2010-10-06 13:23:09,455 [main] INFO  org.apache.pig.backend.local.executionengine.LocalPigLauncher - Success!!
+    (LITTLE LAMB)
+    (LITTLE LAMB)
+    (LITTLE LAMB)
+    (WAS WHITE AS SNOW)
+ 
 
 ## License
 
