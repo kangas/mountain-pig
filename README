@@ -1,0 +1,24 @@
+# mountain-pig
+
+Utilities for use with Apache Pig (http://hadoop.apache.org/pig)
+
+The name is from my sister's dog, Hank, a little porker who'll climb anything.
+Here's a picture: http://www.flickr.com/photos/mattkangas/2956057564/
+
+Besides, I figured "mountain-pig" is no worse a name than
+http://github.com/kevinweil/elephant-bird/
+
+
+## Usage
+
+FIXME: write
+
+## Installation
+
+FIXME: write
+
+## License
+
+Copyright (C) 2010 Matt Kangas
+
+Distributed under the Eclipse Public License, the same as Clojure.
