@@ -3,7 +3,7 @@
 Extensions for Apache Pig, written in Clojure.
 
 "Mountain Pig" is a nickname for my sister's dog Hank, a French Bulldog.
-We call him this because he's a little porker who'll climb anything.
+We call him this because he's a little porker who will climb anything.
 Here's a picture of him in action:
 <http://www.flickr.com/photos/mattkangas/2956057564>
 
