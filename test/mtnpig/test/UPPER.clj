@@ -1,11 +1,11 @@
-(ns mtnpig.test.udf.UPPER
-  (:use [mtnpig.udf.UPPER] :reload)
+(ns mtnpig.test.UPPER
+  (:use [mtnpig.UPPER] :reload)
   (:use [clojure.test])
   (:import [org.apache.pig.data DefaultTuple])
   )
 
 ;; in REPL:
-;; (use '[mtnpig.udf.UPPER] :reload)
+;; (use '[mtnpig.UPPER] :reload)
 ;; (import [org.apache.pig.data DefaultTuple])
 
 (def testdata

@@ -10,7 +10,7 @@
   ;; Declare namespaces to compile "ahead-of-time" (AOT).
   ;; Put a regex here to compile all namespaces whose names match.
   ;; Needed for gen-class.
-  :aot [#"mtnpig\.udf.*"]
+  :aot [#"mtnpig.*"]
 
   ;; Compile java stubs using lein-javac
   ;; See github.com/antoniogarrote/lein-javac
