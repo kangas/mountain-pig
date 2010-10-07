@@ -1,18 +1,19 @@
 # mountain-pig
 
-Utilities for use with Apache Pig (http://hadoop.apache.org/pig)
+Extensions for Apache Pig, written in Clojure.
 
 The name is from my sister's dog, Hank, a little porker who'll climb anything.
 Here's a picture of him in action:
+
 http://www.flickr.com/photos/mattkangas/2956057564/
 
-Besides, I figured "mountain-pig" is no more ridiculous a name that Twitter's
-"elephant-bird" library. :-) (http://github.com/kevinweil/elephant-bird/)
+Yes, he's ridiculous. So is the idea of embedding Clojure within Pig.
+But here it is!
 
 ## Requirements
 
-1. Pig 0.6
-2. Leiningen
+1. Pig 0.6	(http://hadoop.apache.org/pig/)
+2. Leiningen	(http://github.com/technomancy/leiningen)
 
 ## Build
 
@@ -25,7 +26,7 @@ Note that "lein uberjar" doesn't do the right thing yet.
 ## Run
 
 Set PIG_CLASSPATH:
-    PIG_CLASSPATH=lib/*:mountain-pig-0.1.0.jar
+    export PIG_CLASSPATH=lib/*:mountain-pig-0.1.0.jar
 
 Run:
     pig -x local sample.pig
@@ -38,7 +39,8 @@ Output should look like:
     (LITTLE LAMB)
     (LITTLE LAMB)
     (WAS WHITE AS SNOW)
- 
+
+Hooray, you just called some Clojure code from Pig!
 
 ## License
 
