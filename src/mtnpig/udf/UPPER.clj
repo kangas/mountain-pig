@@ -1,34 +1,57 @@
 (ns mtnpig.udf.UPPER
+  "Direct translation of the UPPER UDF described at 
+   http://hadoop.apache.org/pig/docs/r0.7.0/udf.html"
   (:gen-class
-   ;; We can't extend org.apache.pig.EvalFunc directly,
-   ;; so use a de-templating wrapper class instead
+   ;; Clojure can't extend templated classes yet.
+   ;; org.apache.pig.EvalFunc is a template.
+   ;; So extend a subclass of EvalFunc instead.
    :extends mtnpig.stub.StringEvalFunc)
-  (:import [org.apache.pig.data Tuple]
+  (:import [org.apache.pig.data Tuple DataType]
 	   [org.apache.pig.impl.util WrappedIOException]
+	   [org.apache.pig.impl.logicalLayer.schema Schema Schema$FieldSchema]
 	   [java.io IOException])
   (:require clojure.string)
   )
 
 (defn upcase-java
-  "Fastest way to upcase"
+  "Native Java upcasing"
   [#^String field]
-  (.toUpperCase field))
+  (.toUpperCase field)
+  )
 
 (defn upcase-clojure
-  "Use Clojure libraries instead"
+  "Upcase via Clojure libraries"
   [field]
-  (clojure.string/upper-case field))
+  (clojure.string/upper-case field)
+  )
+
+;; Begin org.apache.pig.EvalFunc interface
 
 (defn -exec
-  "Port of http://hadoop.apache.org/pig/docs/r0.7.0/udf.html#How+to+Write+a+Simple+Eval+Function"
+  "Entry point for Pig evaluation. Invoked on every Tuple of a given dataset."
   [this #^Tuple input]
   (let [field (.get input 0)]
     ;; check for invalid input first
     (if (not (instance? String field))
       (throw (IOException. (format "Input is not String: %s" (type field))))
-      ;; else
       (try
 	(upcase-clojure field)
 	(catch Exception e
 	  ;; this improves pig error output
-	  (throw (WrappedIOException/wrap "****woot****" e)))))))
+	  (throw (WrappedIOException/wrap "****woot****" e))))))
+  )
+
+(defn -outputSchema
+  "Assign a name to the output column.
+   We just clone our input schema."
+  [this #^Schema input]
+  (Schema. input)
+  ;; (let [classname (.. this getClass getName toLowerCase)]
+  ;;   (Schema.
+  ;;    (Schema$FieldSchema.
+  ;;     (.getSchemaName this classname input)
+  ;;     DataType/CHARARRAY)))
+  )
+
+;; TODO: implement -getArgToFuncMapping so we can accept inputs
+;; that are not explicitly typed "chararray" in Pig
