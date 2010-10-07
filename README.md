@@ -2,17 +2,19 @@
 
 Extensions for Apache Pig, written in Clojure.
 
-The name is from my sister's dog, Hank, a little porker who'll climb anything.
+"Mountain Pig" is a nickname for my sister's dog Hank, a French Bulldog.
+We call him this because he's a little porker who'll climb anything.
+
 Here's a picture of him in action:
-[http://www.flickr.com/photos/mattkangas/2956057564](http://www.flickr.com/photos/mattkangas/2956057564)
+<http://www.flickr.com/photos/mattkangas/2956057564>
 
 Yes, he's ridiculous. So is the idea of embedding Clojure within Pig. 
 But here it is!
 
 ## Requirements
 
-1. Pig 0.6	(http://hadoop.apache.org/pig/)
-2. Leiningen	(http://github.com/technomancy/leiningen)
+1. Pig 0.6	- <http://hadoop.apache.org/pig>
+2. Leiningen	- <http://github.com/technomancy/leiningen>
 
 ## Build
 
