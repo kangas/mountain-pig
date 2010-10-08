@@ -1,7 +1,7 @@
-(ns mtnpig.string.Split
-  "Direct translation of the Split UDF from 
-   http://svn.apache.org/repos/asf/pig/tags/release-0.7.0/contrib/piggybank/java/src/main/java/org/apache/pig/piggybank/evaluation/string/Split.java
-  "
+(ns mtnpig.daylife.NormalizeApiArgs
+  "Process a string of GET query parameters per
+   http://developer.daylife.com/docs/"
+  
   ;; Clojure can't extend generic classes,
   ;; so extend a subclass of org.apache.pig.EvalFunc.
   (:gen-class
@@ -14,18 +14,34 @@
 	   [java.util.regex Pattern])
   (:require clojure.string))
 
-;; Begin org.apache.pig.EvalFunc interface
+
+(def keep-tokens-regex
+     #"^(start_time|end_time|query|offset|limit)=")
+
+(def ignore-tokens-regex
+     #"^(_uuid|signature)=")
+
+(defn compute-daterange
+  "Return delta in days between start/end_date"
+  [& toks]
+  )
+
+(defn normalize-query
+  "Split HTTP query string"
+  [#^String query-string]
+  (let [tokens (clojure.string/split query-string #"[&]")]
+    (sort tokens)))
+
+;;; Begin org.apache.pig.EvalFunc interface
 
 (defn -exec
   "Entry point for Pig evaluation. Invoked on every Tuple of a given dataset."
   [this #^Tuple input]
-  (let [[#^String s #^String re] (.getAll input)]
+  (let [[#^String s] (.get input 0)]
     (try
-      (.newTuple
-       (TupleFactory/getInstance)
-       #^List (clojure.string/split s (Pattern/compile re)))
+      (.newTuple (TupleFactory/getInstance) #^List (normalize-query s))
       (catch Exception e
-	(throw (WrappedIOException/wrap "****woot****" e))))))
+	(throw (WrappedIOException/wrap "**woot**" e))))))
 
 ;; (defn -outputSchema
 ;;   "Specify a name+type for our output. Else, Pig assumes bytearray"

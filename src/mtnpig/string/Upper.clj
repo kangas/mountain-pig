@@ -1,10 +1,10 @@
 (ns mtnpig.string.Upper
   "Direct translation of the UPPER UDF described at 
    http://hadoop.apache.org/pig/docs/r0.7.0/udf.html"
+  
+  ;; Clojure can't extend generic classes,
+  ;; so extend a subclass of org.apache.pig.EvalFunc.
   (:gen-class
-   ;; Clojure can't extend templated classes yet.
-   ;; org.apache.pig.EvalFunc is a template.
-   ;; So extend a subclass of EvalFunc instead.
    :extends mtnpig.stub.StringEvalFunc)
   (:import [org.apache.pig.data Tuple DataType]
 	   [org.apache.pig.impl.util WrappedIOException]
@@ -23,7 +23,7 @@
   [field]
   (clojure.string/upper-case field))
 
-;; Begin org.apache.pig.EvalFunc interface
+;;; Begin org.apache.pig.EvalFunc interface
 
 (defn -exec
   "Entry point for Pig evaluation. Invoked on every Tuple of a given dataset."
