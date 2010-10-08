@@ -1,4 +1,4 @@
-(ns mtnpig.UPPER
+(ns mtnpig.string.Upper
   "Direct translation of the UPPER UDF described at 
    http://hadoop.apache.org/pig/docs/r0.7.0/udf.html"
   (:gen-class
@@ -16,14 +16,12 @@
 (defn upcase-java
   "Native Java upcasing"
   [#^String field]
-  (.toUpperCase field)
-  )
+  (.toUpperCase field))
 
 (defn upcase-clojure
   "Upcase via Clojure libraries"
   [field]
-  (clojure.string/upper-case field)
-  )
+  (clojure.string/upper-case field))
 
 ;; Begin org.apache.pig.EvalFunc interface
 
@@ -38,8 +36,7 @@
 	(upcase-clojure field)
 	(catch Exception e
 	  ;; this improves pig error output
-	  (throw (WrappedIOException/wrap "****woot****" e))))))
-  )
+	  (throw (WrappedIOException/wrap "****woot****" e)))))))
 
 (defn -outputSchema
   "Assign a name to the output column.

@@ -1,5 +1,5 @@
-(ns mtnpig.test.UPPER
-  (:use [mtnpig.UPPER] :reload)
+(ns mtnpig.test.string.Upper
+  (:use [mtnpig.string.Upper] :reload)
   (:use [clojure.test])
   (:import [org.apache.pig.data DefaultTuple])
   )
@@ -14,7 +14,7 @@
        (.append "Spam\tEggs"))
      )
 
-(deftest test-UPPER-exec
+(deftest test-Upper-exec
   (let [r (-exec {} testdata)]
     (prn r)
     (is (string? r))))
