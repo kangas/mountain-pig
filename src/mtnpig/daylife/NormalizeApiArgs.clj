@@ -9,6 +9,7 @@
   (:import [org.apache.pig.data DataType Tuple TupleFactory]
 	   [org.apache.pig.impl.util WrappedIOException]
 	   [org.apache.pig.impl.logicalLayer.schema Schema Schema$FieldSchema]
+	   [java.util List]
 	   [java.io IOException])
   (:require clojure.string))
 
