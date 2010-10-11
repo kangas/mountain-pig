@@ -1,4 +1,4 @@
-(ns mtnpig.string.Split
+(ns mtnpig.udf.Split
   "Direct translation of the Split UDF from 
    http://svn.apache.org/repos/asf/pig/tags/release-0.7.0/contrib/piggybank/java/src/main/java/org/apache/pig/piggybank/evaluation/string/Split.java
   "

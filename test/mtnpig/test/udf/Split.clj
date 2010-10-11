@@ -1,5 +1,5 @@
-(ns mtnpig.test.string.Split
-  (:use [mtnpig.string.Split] :reload)
+(ns mtnpig.test.udf.Split
+  (:use [mtnpig.udf.Split] :reload)
   (:use [clojure.test])
   (:import [org.apache.pig.data DefaultTuple TupleFactory])
   )

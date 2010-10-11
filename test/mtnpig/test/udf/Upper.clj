@@ -1,5 +1,5 @@
-(ns mtnpig.test.string.Upper
-  (:use [mtnpig.string.Upper] :reload)
+(ns mtnpig.test.udf.Upper
+  (:use [mtnpig.udf.Upper] :reload)
   (:use [clojure.test])
   (:import [org.apache.pig.data DefaultTuple])
   )
@@ -11,10 +11,9 @@
 (def testdata
      (doto (new DefaultTuple)
        (.append "Hello\tWorld")
-       (.append "Spam\tEggs"))
-     )
+       (.append "Spam\tEggs")))
 
 (deftest test-Upper-exec
   (let [r (-exec {} testdata)]
-    (prn r)
-    (is (string? r))))
+    (is (string? r))
+    (is (not (.find (.matcher #"[a-z]" r))))))

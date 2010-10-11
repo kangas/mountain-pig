@@ -1,4 +1,4 @@
-(ns mtnpig.string.Upper
+(ns mtnpig.udf.Upper
   "Direct translation of the UPPER UDF described at 
    http://hadoop.apache.org/pig/docs/r0.7.0/udf.html"
   
