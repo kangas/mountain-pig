@@ -1,27 +1,13 @@
 (ns mtnpig.test.daylife.NormalizeApiArgs
   (:use [mtnpig.daylife.NormalizeApiArgs] :reload)
   (:use [clojure.test]
-	[clojure.pprint])
-  (:import [org.apache.pig.data TupleFactory])
-  )
+	[clojure.pprint]
+	[mtnpig.core :as core])
+  (:import [org.apache.pig.data TupleFactory]]))
 
 ;; in REPL:
-;; (use '[mtnpig.UPPER] :reload)
+;; (use '[mtnpig.core] :reload)
 ;; (import [org.apache.pig.data DefaultTuple])
-
-;; DOESN'T WORK??
-(defn make-tuple-BROKEN
-  [& args]
-  (let [t (.newTuple (TupleFactory/getInstance))]
-    (for [arg args] (.append t arg))
-    t))
-
-(defn make-tuple
-  [x y]
-  (let [t (.newTuple (TupleFactory/getInstance))]
-    (.append t x)
-    (.append t y)
-    t))
 
 ;; (defn print-any
 ;;   [& args]
@@ -52,15 +38,9 @@
       "sort=date&source_filter_id=0c8DepP5IdfQb&start_time=1276292700&_uuid=9704bf04-bc5d-11df-b5be-00188b7e2504&signature=4878c3fe7e63c382fa810a39c91a53eb&limit=11&end_time=1284068700&offset=0&query=education+OR+educate+OR+teacher+OR+school+OR+classroom+OR+college+OR+university&accesskey=459f2931e4d2e4710f09fbea20c203ae"
       ])
 
-(deftest test-maketuple
-  (is (= (make-tuple "Spam" "Eggs")
-	 (doto (.newTuple (TupleFactory/getInstance))
-	   (.append "Spam")
-	   (.append "Eggs")))))
-
-(deftest test-normalize-query
-  (do 
-    (println (normalize-query (first testdata-search)))
-    (println "--")
-    (pprint (for [q testdata-search] (normalize-query q)))
-    ))
+;; (deftest test-normalize-query
+;;   (do 
+;;     ;; (println (normalize-query (first testdata-search)))
+;;     ;; (println "--")
+;;     (pprint (for [q testdata-search] (normalize-query q)))
+;;     ))

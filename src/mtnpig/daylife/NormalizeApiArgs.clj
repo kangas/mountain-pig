@@ -9,22 +9,11 @@
   (:import [org.apache.pig.data DataType Tuple TupleFactory]
 	   [org.apache.pig.impl.util WrappedIOException]
 	   [org.apache.pig.impl.logicalLayer.schema Schema Schema$FieldSchema]
-	   [java.io IOException]
-	   [java.util List]
-	   [java.util.regex Pattern])
+	   [java.io IOException])
   (:require clojure.string))
 
-
-(def keep-tokens-regex
-     #"^(start_time|end_time|query|offset|limit)=")
-
-(def ignore-tokens-regex
-     #"^(_uuid|signature)=")
-
-(defn compute-daterange
-  "Return delta in days between start/end_date"
-  [& toks]
-  )
+;; (def keep-tokens-regex #"^(start_time|end_time|query|offset|limit)=")
+;; (def ignore-tokens-regex #"^(_uuid|signature)=")
 
 (defn normalize-query
   "Split HTTP query string"
@@ -32,7 +21,9 @@
   (let [tokens (clojure.string/split query-string #"[&]")]
     (sort tokens)))
 
+;;;
 ;;; Begin org.apache.pig.EvalFunc interface
+;;;
 
 (defn -exec
   "Entry point for Pig evaluation. Invoked on every Tuple of a given dataset."
